@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
+        changeFragment(firstFragment)
         findViewById<BottomNavigationView>(R.id.bottomNav).setOnItemSelectedListener {
             when(it.itemId){
                 R.id.firstfm -> {
