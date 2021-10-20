@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 class SecondFragment : Fragment() {
-    private lateinit var vm : MainViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,11 +22,5 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm = ViewModelProvider(requireActivity())[MainViewModel::class.java]
-        
-        vm.inputText.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "onViewCreated: ${vm.inputText.value}")
-            view.findViewById<TextView>(R.id.textView).text = vm.inputText.value
-        })
     }
 }
