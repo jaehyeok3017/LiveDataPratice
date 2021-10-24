@@ -10,8 +10,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import org.w3c.dom.Text
 
 class SecondFragment : Fragment() {
+    private lateinit var vm : MainViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,5 +25,11 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        vm = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
+        vm.inputText.observe(viewLifecycleOwner, Observer {
+            view.findViewById<TextView>(R.id.textView).text = vm.inputText.value
+        }
+        )
     }
 }
